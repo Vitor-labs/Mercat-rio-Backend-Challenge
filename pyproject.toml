@@ -1,0 +1,11 @@
+[project]
+name = "mercatoriobackendchallenge"
+version = "0.1.0"
+description = "Teste Backend feito em FastAPI para a Mercatório"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.12",
+    "pydantic>=2.11.4",
+    "sqlalchemy>=2.0.41",
+]
