@@ -1,4 +1,5 @@
 ✅ Endpoints Implementados
+
 | Método | Rota                              | Descrição                                   |
 | ------ | --------------------------------- | ------------------------------------------- |
 | `POST` | `/credores`                       | Cadastra credor e precatório                |

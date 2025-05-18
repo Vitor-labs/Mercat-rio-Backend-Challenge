@@ -1,0 +1,46 @@
+services:
+  mercatoriobackendchallenge:
+    image: mercatoriobackendchallenge
+    build:
+      context: ./app  # Path to your FastAPI project Dockerfile
+      dockerfile: ./Dockerfile
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/test_db
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app-network
+
+  db:
+    image: postgres:14
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  redis:
+    image: redis:latest
+    container_name: redis_cache
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:
