@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from app.models.base import Base, OrigemCertidao, StatusCertidao, TipoCertidao
 
 
-class Certidão(Base):
+class Certidao(Base):
     __tablename__ = "certidoes"
 
     id = Column(Integer, primary_key=True)
