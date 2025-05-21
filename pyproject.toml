@@ -11,3 +11,8 @@ dependencies = [
     "pydantic-settings>=2.9.1",
     "sqlalchemy>=2.0.41",
 ]
+
+[dependency-groups]
+dev = [
+    "faker>=37.3.0",
+]

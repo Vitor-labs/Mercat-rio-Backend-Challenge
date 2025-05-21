@@ -1,8 +1,10 @@
+version: '3.9'
+
 services:
   mercatoriobackendchallenge:
     image: mercatoriobackendchallenge
     build:
-      context: ./app  # Path to your FastAPI project Dockerfile
+      context: ./app
       dockerfile: ./Dockerfile
     container_name: fastapi_app
     ports:
@@ -13,6 +15,17 @@ services:
     depends_on:
       - db
       - redis
+    networks:
+      - app-network
+
+  certidoes_api:
+    image: certidoes-api
+    build:
+      context: ./certidoes_api
+      dockerfile: ./Dockerfile
+    container_name: certidoes_service
+    ports:
+      - "8001:8000"
     networks:
       - app-network
 
